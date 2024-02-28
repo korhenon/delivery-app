@@ -12,10 +12,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class OnboardViewModel @Inject constructor(
-//    val sharedPreferences: SharedPreferencesService
+    val sharedPreferences: SharedPreferencesService
 ) : ViewModel() {
-    //    var pageId by mutableIntStateOf(sharedPreferences.lastPage)
-    var pageId = 0
+    var pageId by mutableIntStateOf(sharedPreferences.lastPage)
     val isLast get() = pageId == 2
     val page get() = OnboardPages[pageId]
     val queueSize get() = 3 - pageId
@@ -25,11 +24,11 @@ class OnboardViewModel @Inject constructor(
     fun next() {
         if (pageId < 2) {
             pageId++
-//            sharedPreferences.lastPage = pageId
+            sharedPreferences.lastPage = pageId
         }
     }
 
     fun skip() {
-//        sharedPreferences.lastPage = 3
+        sharedPreferences.lastPage = 3
     }
 }
