@@ -15,4 +15,12 @@ class SharedPreferencesService @Inject constructor(
             editor.putInt("lastPage", value)
             editor.apply()
         }
+
+    var token: String?
+        get() = sp.getString("token", "no_token")
+        set(value) {
+            val editor = sp.edit()
+            editor.putString("token", value ?: "no_token")
+            editor.apply()
+        }
 }

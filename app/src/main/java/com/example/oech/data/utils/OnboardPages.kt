@@ -1,12 +1,7 @@
 package com.example.oech.data.utils
 
 import com.example.oech.R
-
-data class OnboardPage(
-    val title: String,
-    val text: String,
-    val image: Int
-)
+import com.example.oech.data.model.OnboardPage
 
 val OnboardPages = listOf(
     OnboardPage(

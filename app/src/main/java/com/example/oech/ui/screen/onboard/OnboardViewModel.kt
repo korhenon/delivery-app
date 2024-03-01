@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.oech.data.local.SharedPreferencesService
-import com.example.oech.data.utils.OnboardPage
 import com.example.oech.data.utils.OnboardPages
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

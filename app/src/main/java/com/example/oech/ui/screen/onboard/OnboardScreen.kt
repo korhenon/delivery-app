@@ -2,6 +2,7 @@ package com.example.oech.ui.screen.onboard
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -78,7 +79,7 @@ fun OnboardScreen(navController: NavHostController, viewModel: OnboardViewModel 
                     OutlinedButton(
                         onClick = {
                             viewModel.skip()
-                            navController.navigate(NavDestinations.Holder)
+                            navController.navigate(NavDestinations.SignUp)
                         },
                         colors = ButtonDefaults.outlinedButtonColors(contentColor = colorScheme.primary),
                         border = BorderStroke(1.dp, colorScheme.primary),
@@ -109,10 +110,10 @@ fun OnboardScreen(navController: NavHostController, viewModel: OnboardViewModel 
                 }
                 Spacer(modifier = Modifier.height(100.dp))
             } else {
-                MaxWidthButton(text = "Sign Up") {
+                MaxWidthButton(text = "Sign Up", onClick = {
                     viewModel.skip()
-                    navController.navigate(NavDestinations.Holder)
-                }
+                    navController.navigate(NavDestinations.SignUp)
+                })
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
                     text = buildAnnotatedString {
@@ -125,7 +126,10 @@ fun OnboardScreen(navController: NavHostController, viewModel: OnboardViewModel 
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(80.dp),
+                        .height(80.dp)
+                        .clickable {
+                            navController.navigate(NavDestinations.SignIn)
+                        },
                     textAlign = TextAlign.Center,
                     fontSize = 14.sp
                 )

@@ -18,7 +18,10 @@ class SplashViewModel @Inject constructor(
         viewModelScope.launch {
             var navDestination = NavDestinations.Onboard
             if (sharedPreferencesService.lastPage == 3) {
-                navDestination = NavDestinations.Holder
+                navDestination = NavDestinations.SignUp
+            }
+            if (sharedPreferencesService.token != "no_token") {
+                navDestination = NavDestinations.Home
             }
             delay(500)
             navController.navigate(navDestination)

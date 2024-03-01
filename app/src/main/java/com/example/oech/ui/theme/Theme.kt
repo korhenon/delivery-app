@@ -28,7 +28,10 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink40,
     background = Color.White,
     onBackground = Text1,
-    onSurfaceVariant = Gray2
+    onSurface = Gray1,
+    onSurfaceVariant = Gray2,
+    error = ErrorRed,
+    surfaceTint = Warning
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
