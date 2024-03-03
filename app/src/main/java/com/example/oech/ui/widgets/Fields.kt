@@ -3,6 +3,7 @@ package com.example.oech.ui.widgets
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -19,7 +20,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -107,5 +110,33 @@ fun PasswordField(
             }
         },
         textStyle = TextStyle(color = Color.Black)
+    )
+}
+
+@Composable
+fun ShadowField(label: String, value: String, onChange: (String) -> Unit) {
+    TextField(
+        value = value,
+        onValueChange = onChange,
+        textStyle = TextStyle(color = Color.Black, fontSize = 12.sp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .shadow(5.dp).height(48.dp),
+        shape = RectangleShape,
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = colorScheme.background,
+            unfocusedContainerColor = colorScheme.background,
+            unfocusedIndicatorColor = colorScheme.background,
+            focusedIndicatorColor = colorScheme.background
+        ),
+        placeholder = {
+            Text(
+                text = label,
+                fontWeight = FontWeight.Medium,
+                fontSize = 12.sp,
+                color = colorScheme.onSurface
+            )
+        }
+
     )
 }

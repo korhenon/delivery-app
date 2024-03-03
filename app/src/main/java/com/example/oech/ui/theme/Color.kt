@@ -17,3 +17,4 @@ val Gray2 = Color(0xFFA7A7A7)
 
 val ErrorRed = Color(0xFFED3A3A)
 val Warning = Color(0xFFEBBC2E)
+val Secondary = Color(0xFFEC8000)

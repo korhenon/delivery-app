@@ -9,4 +9,12 @@ object NavDestinations {
     const val ForgotPassword = "ForgotPassword"
     const val OTPVerification = "OTP"
     const val NewPassword = "NewPassword"
+    const val Profile = "Profile"
+    const val AddPaymentMethod = "AddPaymentMethod"
+    const val Notifications = "Notifications"
+    const val SendPackage = "SendPackage"
+    const val Receipt = "Receipt"
+    const val TransactionSuccessful = "TransactionSuccessful"
+    const val Wallet = "Wallet"
+    const val Track = "Track"
 }

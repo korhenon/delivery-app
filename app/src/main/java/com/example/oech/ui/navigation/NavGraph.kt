@@ -1,33 +1,37 @@
 package com.example.oech.ui.navigation
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.oech.data.utils.NavDestinations
+import com.example.oech.ui.screen.addpaymentmethod.AddPaymentMethodScreen
 import com.example.oech.ui.screen.forgotpassword.ForgotPasswordScreen
+import com.example.oech.ui.screen.home.HomeScreen
 import com.example.oech.ui.screen.newpassword.NewPasswordScreen
 import com.example.oech.ui.screen.newpassword.NewPasswordViewModel
+import com.example.oech.ui.screen.notification.NotificationScreen
 import com.example.oech.ui.screen.onboard.OnboardScreen
 import com.example.oech.ui.screen.otpverification.OTPVerificaionScreen
 import com.example.oech.ui.screen.otpverification.OTPVerificationViewModel
+import com.example.oech.ui.screen.profile.ProfileScreen
+import com.example.oech.ui.screen.receipt.ReceiptScreen
+import com.example.oech.ui.screen.receipt.ReceiptViewModel
+import com.example.oech.ui.screen.sendpackage.SendPackageScreen
 import com.example.oech.ui.screen.signin.SignInScreen
 import com.example.oech.ui.screen.signup.SignUpScreen
 import com.example.oech.ui.screen.splash.SplashScreen
+import com.example.oech.ui.screen.transactionsuccessful.TransactionSuccessfulScreen
+import com.example.oech.ui.screen.transactionsuccessful.TransactionSuccessfulViewModel
+import com.example.oech.ui.widgets.CustomBottomNavigation
 
 @Composable
 fun NavGraph(
     otpVerificationViewModel: OTPVerificationViewModel = hiltViewModel(),
-    newPasswordViewModel: NewPasswordViewModel = hiltViewModel()
+    newPasswordViewModel: NewPasswordViewModel = hiltViewModel(),
+    receiptViewModel: ReceiptViewModel = hiltViewModel(),
+    transactionSuccessfulViewModel: TransactionSuccessfulViewModel = hiltViewModel()
 ) {
     val navController = rememberNavController()
 
@@ -39,8 +43,8 @@ fun NavGraph(
             OnboardScreen(navController)
         }
         composable(NavDestinations.Home) {
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text(text = "Home", color = Color.Black, fontSize = 24.sp)
+            CustomBottomNavigation(NavDestinations.Home, navController) {
+                HomeScreen(navController)
             }
         }
         composable(NavDestinations.SignUp) {
@@ -57,6 +61,29 @@ fun NavGraph(
         }
         composable(NavDestinations.NewPassword) {
             NewPasswordScreen(navController, newPasswordViewModel)
+        }
+        composable(NavDestinations.Profile) {
+            CustomBottomNavigation(NavDestinations.Profile, navController, true) {
+                ProfileScreen(navController)
+            }
+        }
+        composable(NavDestinations.AddPaymentMethod) {
+            AddPaymentMethodScreen(navController)
+        }
+        composable(NavDestinations.Notifications) {
+            NotificationScreen(navController)
+        }
+        composable(NavDestinations.SendPackage) {
+            SendPackageScreen(navController, receiptViewModel)
+        }
+        composable(NavDestinations.Receipt) {
+            ReceiptScreen(navController, receiptViewModel, transactionSuccessfulViewModel)
+        }
+        composable(NavDestinations.TransactionSuccessful) {
+            TransactionSuccessfulScreen(navController, transactionSuccessfulViewModel)
+        }
+        composable(NavDestinations.Track) {
+
         }
     }
 }
